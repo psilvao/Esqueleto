@@ -1,0 +1,101 @@
+<html>
+<head>
+
+  <link rel="manifest" href="https://psilvao.github.io/Esqueleto/manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/esqueleto-para-armar-craneo-144x144.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="white"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Esqueleto">
+  <meta name="msapplication-TileImage" content="images/esqueleto-para-armar-craneo-144x144.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+
+
+<style type="text/css">
+
+.drag{
+position:relative;
+cursor:hand;
+z-index: 100;
+}
+
+
+
+</style>
+
+<script type="text/javascript">
+
+/***********************************************
+* Drag and Drop Script: (c) Dynamic Drive (http://www.dynamicdrive.com)
+* Please keep this notice intact
+* Visit http://www.dynamicdrive.com/ for this script and 100s more.
+***********************************************/
+
+var dragobject={
+z: 0, x: 0, y: 0, offsetx : null, offsety : null, targetobj : null, dragapproved : 0,
+initialize:function(){
+document.onmousedown=this.drag
+document.onmouseup=function(){this.dragapproved=0}
+},
+drag:function(e){
+var evtobj=window.event? window.event : e
+this.targetobj=window.event? event.srcElement : e.target
+if (this.targetobj.className=="drag"){
+this.dragapproved=1
+if (isNaN(parseInt(this.targetobj.style.left))){this.targetobj.style.left=0}
+if (isNaN(parseInt(this.targetobj.style.top))){this.targetobj.style.top=0}
+this.offsetx=parseInt(this.targetobj.style.left)
+this.offsety=parseInt(this.targetobj.style.top)
+this.x=evtobj.clientX
+this.y=evtobj.clientY
+if (evtobj.preventDefault)
+evtobj.preventDefault()
+document.onmousemove=dragobject.moveit
+}
+},
+moveit:function(e){
+var evtobj=window.event? window.event : e
+if (this.dragapproved==1){
+this.targetobj.style.left=this.offsetx+evtobj.clientX-this.x+"px"
+this.targetobj.style.top=this.offsety+evtobj.clientY-this.y+"px"
+return false
+}
+}
+}
+
+dragobject.initialize()
+
+
+var ok = Audio();
+ok.src="applause7.mp3";
+
+var nok = Audio();
+nok.src="nook.mp3";
+</script>
+
+</head>
+<body>
+<h1><b>&iquest;Quieres armar a huesitos?</b></h1>
+
+
+<p> Escoge un huesito y col&oacute;calo en su posici&oacute;n correcta </p>
+<br>
+<img src="images/esqueleto-para-armar-craneo.png" class="drag" style="width:10%; position:absolute;top:14%;left:25%;"><br>
+<img src="images/esqueleto-para-armar-hueso1.png" class="drag" style="width:4.5%; position:absolute;top:28%;left:25%;"><br>
+<img src="images/esqueleto-para-armar-hueso2.png" class="drag" style="width:10%; position:absolute;top:32%;left:25%;"><br>
+<img src="images/esqueleto-para-armar-hueso3.png" class="drag" style="width:10%; position:absolute;top:44%;left:25%;"><br>
+<img src="images/esqueleto-para-armar-hueso4.png" class="drag" style="width:8%; position:absolute;top:55%;left:25%;"><br>
+<img src="images/esqueleto-para-armar-hueso5.png" class="drag" style="width:8%; position:absolute;top:55%;left:20%;"><br>
+<img src="images/esqueleto-para-armar-hueso6.png" class="drag" style="width:4%; position:absolute;top:55%;left:25%;"><br>
+<img src="images/esqueleto-para-armar-hueso7.png" class="drag" style="width:4%; position:absolute;top:55%;left:20%;"><br>
+<img src="images/esqueleto-para-armar-hueso8.png" class="drag" style="width:8%; position:absolute;top:55%;left:25%;"><br>
+<img src="images/esqueleto-para-armar-hueso9.png" class="drag" style="width:8%; position:absolute;top:55%;left:20%;"><br>
+<br>
+<img src="images/ok.png" style="width:4%;" onclick="ok.play()">
+<img src="images/nook.png" style="width:4%;" onclick="nok.play()">
+
+</body>
+</html>
