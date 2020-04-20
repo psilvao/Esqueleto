@@ -3,7 +3,8 @@ var filesToCache = [
   '/Esqueleto/',
   '/Esqueleto/index.html',
   '/Esqueleto/css/style.css',
-  '/Esqueleto/js/main.js'
+  '/Esqueleto/js/main.js',
+  '/Esqueleto/js/DragDropTouch.js'
 ];
 
 /* Start the service worker and cache all of the app's content */
